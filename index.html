@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Academic website of David (Dawei) Ding, Associate Professor at Fudan University and SIMIS.">
+  <meta name="keywords" content="Dawei Ding, David Ding, quantum information, quantum computing, quantum telepathy, Fudan University, SIMIS">
+  <title>Ding Group at Fudan University</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #647084;
+      --accent: #2855a6;
+      --line: #dbe0e8;
+      --paper: #fbfcfd;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      align-items: center;
+      background: rgba(251, 252, 253, 0.96);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      min-height: 68px;
+      padding: 0 5vw;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .site-name {
+      color: var(--ink);
+      font-family: Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .site-header nav { display: flex; gap: 1.75rem; }
+    .site-header nav a { color: var(--ink); font-size: 0.85rem; text-decoration: none; }
+
+    .page { margin: 0 auto; max-width: 1080px; padding: 0 2rem; }
+    .intro {
+      align-items: center;
+      display: grid;
+      gap: clamp(3rem, 8vw, 7rem);
+      grid-template-columns: 1fr 280px;
+      min-height: 640px;
+      padding: 6rem 0;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; }
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 4.25rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .role { font-size: 1.05rem; font-weight: 600; }
+    .summary { color: var(--muted); font-size: 1.05rem; max-width: 650px; }
+    .links { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 1.75rem; }
+    .links a { font-size: 0.9rem; font-weight: 600; }
+    .portrait { background: #edf0f4; display: block; height: auto; object-fit: cover; width: 100%; }
+
+    section:not(.intro) {
+      border-top: 1px solid var(--line);
+      padding: 5.5rem 0;
+      scroll-margin-top: 68px;
+    }
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin: 0 0 2.5rem;
+    }
+    .research-list { display: grid; gap: 2.5rem; grid-template-columns: repeat(3, 1fr); }
+    .research-list article { border-left: 3px solid var(--accent); padding-left: 1.25rem; }
+    .research-list h3, .background-grid h3 {
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin: 0 0 0.75rem;
+    }
+    .research-list p { color: var(--muted); font-size: 0.9rem; margin: 0; }
+
+    .section-title-row { align-items: baseline; display: flex; justify-content: space-between; }
+    .section-title-row > a { font-size: 0.85rem; }
+    .publications { border-top: 1px solid var(--line); list-style: none; margin: 0; padding: 0; }
+    .publications li {
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 65px 1fr;
+      padding: 1.5rem 0;
+    }
+    .publications .year {
+      color: var(--muted);
+      font-family: ui-monospace, monospace;
+      font-size: 0.78rem;
+    }
+    .publications a {
+      color: var(--ink);
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .publications p { color: var(--muted); font-size: 0.78rem; margin: 0.35rem 0 0; }
+
+    .background-grid { display: grid; gap: 5rem; grid-template-columns: 1.4fr 1fr; }
+    dl { margin: 0; }
+    dl > div {
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 110px 1fr;
+      padding: 1rem 0;
+    }
+    dt { color: var(--muted); font-family: ui-monospace, monospace; font-size: 0.75rem; }
+    dd { font-size: 0.9rem; margin: 0; }
+    footer {
+      border-top: 1px solid var(--line);
+      display: flex;
+      font-size: 0.78rem;
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: 1080px;
+      padding: 2rem;
+    }
+
+    @media (max-width: 720px) {
+      .site-header nav { display: none; }
+      .site-name { font-size: 1rem; }
+      .page { padding: 0 1.25rem; }
+      .intro {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 2.5rem;
+        min-height: 0;
+        padding: 4rem 0;
+      }
+      .portrait { align-self: flex-start; max-width: 230px; }
+      h1 { font-size: clamp(2.65rem, 12vw, 3.6rem); }
+      .research-list, .background-grid { grid-template-columns: 1fr; }
+      .research-list { gap: 2rem; }
+      .background-grid { gap: 3rem; }
+      .section-title-row { align-items: flex-start; flex-direction: column; margin-bottom: 2rem; }
+      .section-title-row h2 { margin-bottom: 0.75rem; }
+      .publications li { grid-template-columns: 50px 1fr; }
+      dl > div { grid-template-columns: 95px 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="#top">Ding Group at Fudan University</a>
+    <nav aria-label="Primary navigation">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#background">Background</a>
+      <a href="#group">Group Members</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page" id="top">
+      <section class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow">Theory of Quantum Computing and Information</p>
+          <h1>David (Dawei) Ding</h1>
+          <p class="role">
+            Associate Professor, Fudan University<br>
+            Shanghai Institute for Mathematics and<br>
+            Interdisciplinary Sciences (SIMIS)
+          </p>
+          <p class="summary">
+            I research the use of quantum nonlocality for coordination between
+            multiple parties in latency-sensitive settings. I am also pursuing
+            a bottom-up approach to quantum computing by exploring new
+            hardware-native quantum gates.
+          </p>
+          <div class="links">
+            <a href="mailto:daweiding@fudan.edu.cn">Email</a>
+            <a href="https://scholar.google.com/citations?user=BsO2ghYAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar ↗</a>
+            <a href="https://www.simis.cn/dawei-ding/" target="_blank" rel="noreferrer">SIMIS profile ↗</a>
+            <a href="https://www.linkedin.com/in/ding-david/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+
+        <img
+          class="portrait"
+          src="assets/dawei-ding.jpg"
+          alt="Portrait of Dawei Ding"
+          width="1213"
+          height="1326"
+        >
+      </section>
+
+      <section id="research">
+        <h2>Research</h2>
+        <div class="research-list">
+          <article>
+            <h3>Quantum telepathy</h3>
+            <p>Using quantum entanglement to coordinate decisions between parties with restricted communication.</p>
+          </article>
+          <article>
+            <h3>Quantum computing at the physical layer</h3>
+            <p>Hardware-aware theory for quantum gates, circuit compilation, benchmarking, and computer architecture.</p>
+          </article>
+          <article>
+            <h3>Quantum Shannon theory</h3>
+            <p>Quantum communication, channel capacities, feedback-assisted communication, and scrambling.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="publications">
+        <div class="section-title-row">
+          <h2>Selected publications</h2>
+          <a href="https://scholar.google.com/citations?user=BsO2ghYAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">View all on Google Scholar ↗</a>
+        </div>
+        <ol class="publications">
+          <li>
+            <span class="year">2026</span>
+            <div>
+              <a href="https://arxiv.org/abs/2603.10883" target="_blank" rel="noreferrer">Quantum Telepathy: A Quantum Technology with Near-Term Applications ↗</a>
+              <p>Dawei Ding, Xinyu Xu</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2025</span>
+            <div>
+              <a href="https://arxiv.org/abs/2510.26349" target="_blank" rel="noreferrer">Quantum Nonlocality under Latency Constraints ↗</a>
+              <p>Dawei Ding, Zhengfeng Ji, Pierre Pocreau, Mingze Xu, Xinyu Xu</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2024</span>
+            <div>
+              <a href="https://arxiv.org/abs/2407.21723" target="_blank" rel="noreferrer">Coordinating Decisions Via Quantum Telepathy ↗</a>
+              <p>Dawei Ding, Liang Jiang</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2024</span>
+            <div>
+              <a href="https://dl.acm.org/doi/abs/10.1145/3620665.3640386" target="_blank" rel="noreferrer">One Gate Scheme to Rule Them All: Introducing a Complex Yet Reduced Instruction Set for Quantum Computing ↗</a>
+              <p>Jianxin Chen, Dawei Ding, Weiyuan Gong, Cupjin Huang, Qi Ye</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2022</span>
+            <div>
+              <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.129.010502" target="_blank" rel="noreferrer">Fluxonium: An Alternative Qubit Platform for High-Fidelity Operations ↗</a>
+              <p>Bao et al.</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2021</span>
+            <div>
+              <a href="https://www.nature.com/articles/s43588-021-00119-7" target="_blank" rel="noreferrer">Efficient Parallelization of Tensor Network Contraction for Simulating Quantum Computation ↗</a>
+              <p>Huang et al.</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2020</span>
+            <div>
+              <a href="https://patents.google.com/patent/US20200394613A1/en" target="_blank" rel="noreferrer">Systems and Methods for Coordinating Decisions Between Non-Communicating Parties ↗</a>
+              <p>Mario Szegedy, Dawei Ding, Yaoyun Shi</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2020</span>
+            <div>
+              <a href="https://arxiv.org/abs/2003.02831" target="_blank" rel="noreferrer">Finding Angles for Quantum Signal Processing with Machine Precision ↗</a>
+              <p>Rui Chao, Dawei Ding, Andras Gilyen, Cupjin Huang, Mario Szegedy</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2019</span>
+            <div>
+              <a href="https://ieeexplore.ieee.org/abstract/document/8849604/" target="_blank" rel="noreferrer">Entropy Bound for the Classical Capacity of a Quantum Channel Assisted by Classical Feedback ↗</a>
+              <p>Dawei Ding, Yihui Quek, Peter Shor, Mark Wilde</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2018</span>
+            <div>
+              <a href="https://www.sciencedirect.com/science/article/pii/S000349161830191X" target="_blank" rel="noreferrer">Out-of-time-order Operators and the Butterfly Effect ↗</a>
+              <p>Jordan Cotler, Dawei Ding, Geoffrey Penington</p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2016</span>
+            <div>
+              <a href="https://link.springer.com/article/10.1007/JHEP12(2016)145" target="_blank" rel="noreferrer">Conditional Mutual Information of Bipartite Unitaries and Scrambling ↗</a>
+              <p>Dawei Ding, Patrick Hayden, Michael Walter</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="background">
+        <h2>Background</h2>
+        <div class="background-grid">
+          <div>
+            <h3>Appointments</h3>
+            <dl>
+              <div><dt>2025—present</dt><dd>Associate Professor, Fudan University and SIMIS</dd></div>
+              <div><dt>2024—2025</dt><dd>Assistant Professor, Yau Mathematical Sciences Center, Tsinghua University</dd></div>
+              <div><dt>2019—2023</dt><dd>Quantum Scientist, Alibaba Quantum Laboratory</dd></div>
+            </dl>
+          </div>
+          <div>
+            <h3>Education</h3>
+            <dl>
+              <div><dt>2019</dt><dd>PhD in Applied Physics, Stanford University</dd></div>
+              <div><dt>2014</dt><dd>BA in Physics and Applied Mathematics, University of California, Berkeley</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section id="group">
+        <h2>Group Members</h2>
+        <div class="background-grid">
+          <div>
+            <h3>Students</h3>
+            <dl>
+              <div><dt>2026—</dt><dd>Jiyu Jiang</dd></div>
+              <div><dt>2026—</dt><dd>Yewen Wang</dd></div>
+            </dl>
+          </div>
+          <div>
+            <h3>Postdocs</h3>
+            <dl>
+              <div><dt>2024—</dt><dd>Xinyu Xu</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 Dawei Ding</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+</body>
+</html>
